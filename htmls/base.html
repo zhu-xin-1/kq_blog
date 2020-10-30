@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>克强的博客</title>
+</head>
+<body>
+    <p1>克强的博客</p1>
+    <p>
+        请登陆
+    </p>
+    <form action="/user_login" method="post">
+{% csrf_token %}
+    <input type="text" , name="name">
+     <input type="password" name="pass">
+        <input type="submit"  name="登陆" value="登陆">
+     <input type="submit"  name="注册" value="注册">
+    </form>
+{{ result }}
+</body>
+</html>
