@@ -7,18 +7,22 @@ def ke_blog(request):
 
 def user_login(request):
     request.encoding = 'utf-8'
-    print(request.POST)
     if '注册' in request.POST:
         return render(request, 'user_register.html', {'result': "请填写用户名及密码"})
-    if request.POST['name'] == 'keqiang' and request.POST['pass'] == '123456':
-        return render(request,'homepage.html',{'result':"登陆成功"})
-    else:
-        return render(request,'base.html',{'result':"账户或者密码错误"})
+    print(request.POST)
+    if '登陆' in request.POST:
+        books = normal_user.models.normal_user.objects.filter(user_name=request.POST['name'])
+        if not books:
+            return render(request, 'base.html', {'result': "账号密码错误"})
+        elif request.POST['pass'] == books[0].user_password:
+            return render(request,'kq_blog.html',{'result':"登陆成功"})
+
+    return HttpResponse('<p>无效</p>')
 
 def user_register(request):
     if "注册" in request.POST:
         test=normal_user.models.normal_user(user_name=request.POST['name'],user_password=request.POST['pass'])
         test.save()
-        return HttpResponse('<p>注册完成</p>')
+        return render(request,'base.html',{'result':"注册成功"})
     else:
         return HttpResponse('<p>失败</p>')

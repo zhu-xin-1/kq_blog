@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>克强的博客</title>
 </head>
-<body>
-$END$
+    <h1>Django的使用</h1>
+    <p>
+        <div> Django的安装等可去<a href="https://www.runoob.com/django/django-install.html">菜鸟教程</a>学习</div>
+        <div> 安装完成后pycharm中打开终端 键入：django-admin.py startproject kq_blog  即可完成一个项目的创立</div>
+    </p>
+<p>
+    <div> Django采用MTV框架，即模型（models)、视图(views)以及模板（Template）</div>
+</p>
+    <div>其中模型可简单理解为 对数据库操作的抽象化（使用ORM来映射数据库），根据url传来的参数在视图中处理后调用对应的模型</div>
+    <div>其中视图是为了完成业务逻辑，包括url连接，调用模型中的数据，以及直接返回HttpResponse 或者使用render，传入处理后的参数并调用模板返回给用户</div>
+    <div>其中模板就是返回给用户的HTML网页</div>
+
+<p>
+    <div> 一般的建立的步骤为</div>
+    <div> 创建模型（比如用于存储用户账户密码的数据库表） </div>
+    <div> 终端命令：django-admin.py startapp normal_user </div>
+<div>这项目中会出现normal_user文件夹，其中models中就是创建我们需要的数据库的文件 </div>
+<div>在models中键入如下内容： </div>
+{% load static %}
+<img src="{% static "images/mysql_tables.png" %}" alt="mysql_tables">
+
+</p>
+<p>
+    <div>   python3 manage.py migrate   # 创建表结构</div>
+      <div>       python3 manage.py makemigrations normal_user  # 让 Django 知道我们在我们的模型有一些变更</div>
+      <div>       python3 manage.py migrate normal_user   # 创建表结构 </div>
+    <div> 其中python3 可用py代替</div>
+</p>
 </body>
 </html>
