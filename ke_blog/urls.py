@@ -22,4 +22,5 @@ urlpatterns = [
     path("ke-blog",views.ke_blog),
     path("user_login",views.user_login),
     path("user_register",views.user_register),
+    path("auu",views.auu),
 ]

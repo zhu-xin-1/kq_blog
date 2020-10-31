@@ -2,8 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import models
 import normal_user
+#登陆首界面
 def ke_blog(request):
     return render(request,"base.html")
+# 测试一下数据库
+def auu(request):
+    test=normal_user.models.Authority(authority_degree =1,authorit_query=True,authorit_add = True,
+                                      authorit_delete = True,authorit_update = True,)
+    test.save()
+    return HttpResponse("<p>添加成功</p>")
 
 def user_login(request):
     request.encoding = 'utf-8'
