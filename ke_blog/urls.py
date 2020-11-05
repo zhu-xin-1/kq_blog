@@ -19,8 +19,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.ke_blog),
     path("ke-blog",views.ke_blog),
     path("user_login",views.user_login),
     path("user_register",views.user_register),
-    path("auu",views.auu),
+    #url路由分发 通过在app中建立urls文件 ，将normal_user地址分发到normal_user的app中，来使得结构清晰，分工明确
+    path("normal_user/",include("normal_user.urls")),
+
+    # 用于创建数据表后添加初始数据 ，初始添加完后可删除
+    #path("auu",views.auu),
 ]
